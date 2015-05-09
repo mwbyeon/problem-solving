@@ -13,7 +13,10 @@ Facebook Hacker Cup 2015
 
 
 ## Round 1
-  * View my score: https://www.facebook.com/hackercup/problems.php?round=344496159068801
+  * https://www.facebook.com/hackercup/problems.php?round=344496159068801
+
+#### Result
+  * View my score: https://www.facebook.com/hackercup/scoreboard?round=344496159068801&target=me
 
     | Rank  | Score | Penalty   | 10:Homework           | 25: Autocomplete      | 25: Winning at Sports | 40: Corporate Gifting |
     | ----- | ----- | --------- | --------------------- | --------------------- | --------------------- | ----------------- |
@@ -21,6 +24,8 @@ Facebook Hacker Cup 2015
 
 
 ## Round 2
+  * https://www.facebook.com/hackercup/problems.php?round=323882677799153
 
 
-
+## Final
+  * https://www.facebook.com/hackercup/problems.php?round=1556405007936780
