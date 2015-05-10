@@ -41,5 +41,16 @@ Google Code Jam 2015
 | C. Hiking Deer                | 19    |           |           |
 
 
-## Round 1C (Rank. xx)
+## Round 1C (Rank. 1084)
 
+| Problem                       | Point | Solved    | Practice  |
+| ----------------------------- | ----- | --------- | --------- |
+| A. Brattleship                | 11    | :o:       |           |
+| A. Brattleship                | 22    | :o:       |           |
+| B. Typewriter Monkey          | 11    | :o:       |           |
+| B. Typewriter Monkey          | 22    |           |           |
+| C. Less Money, More Problem   | 11    | :o:       |           |
+| C. Less Money, More Problem   | 23    |           |           |
+
+
+## Round 2
