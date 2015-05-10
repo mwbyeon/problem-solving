@@ -33,7 +33,7 @@ Google Code Jam 2015
 | Problem                       | Point | Solved    | Practice  |
 | ----------------------------- | ----- | --------- | --------- |
 | A. Counter Culture            | 11    | :o:       |           |
-| A. Standing Ovation           | 14    |           |           |
+| A. Counter Culture            | 14    |           |           |
 | B. Noisy Neighbors            | 12    | :o:       |           |
 | B. Noisy Neighbors            | 15    |           |           |
 | C. Hiking Deer                | 13    |           |           |
@@ -53,4 +53,4 @@ Google Code Jam 2015
 | C. Less Money, More Problem   | 23    |           |           |
 
 
-## Round 2
+## Round 2 (Not Advanced)
