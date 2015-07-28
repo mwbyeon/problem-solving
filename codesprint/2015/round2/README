@@ -1,0 +1,78 @@
+
+CodeSprint 2015 Round2
+======================
+
+# MinWoo Byeon (변민우)
+
+# 알고리즘 설명
+  * 최고 점수 기록 (0.08109)
+    * 영화 추천을 위한 것이므로 영화 아이템, 영화 구매기록만을 사용(TV는 영화와 영역으로 봄)
+    * 여러가지 데이터 분석 과정에서 월별 조회수가 높은 영화를 찾아보니
+      * 갑자기 할인에 의해 0원으로 풀리는 경우 조회수 급등(월 1만명 이상 시청)
+      * 박스오피스 기준 누적 관람객 상위인 영화가 제공될 경우
+    * 3월에 무슨 영화가 무료로 제공 될 수 있는지 기존 누적 데이터로 추측을 하려고 했으나 실패
+    * 그 외 사람들이 많이 보는 영화의 성격 분석 결과
+      * 청소년관람불가 (특히 2월 14일 기준 성인 영화 조회 수가 급등하는 현상 발생. 헤헷)
+      * 한국영화
+      * 박스오피스 누적관람객 상위 영화 (2015년 2월까지 박스오피스 데이터 기준으로)
+    * 사람들이 많이 보는 영화 분석 결과의 검증 (테스트 제출)
+      * 영화관 보다는 늦게 서비스 되므로 박스오피스 상위 영화 중 특정 영화를 하나 선정해서 모든 사람에게 추천을 해 보자
+      * "인터스텔라"의 경우 0.03705
+        * 2015년 2월 기준 박스오피스 누적관람객 상위 기준에 근거
+      * "강남 1970"의 경우 0.08109 
+        * 청소년관람불가와 한국영화, 3월 14일이 다가온다는 여러가지 특수성을 고려해서 선정
+    * 문제에서 설명 된 mAP를 구하는 공식을 분석해 보면 사람들에게 많은 영화를 추천하는 것보다
+      글로벌 구매 확률이 높은 하나의 영화만을 추천하는 것이 mAP 성능 지표에 좋다는 사실을 확인되어 하나만 추천.
+      * 실제로 박스오피스 기준 "강남"과 "인터스텔라", "테이큰3", "빅 히어로" 등을 함께 추천을 해 보았으나 성능이 더 떨어짐 (0.07750)
+    * 결국 기존 데이터 분석 결과 청소년관람불가, 한국영화, 박스오피스 상위 기준으 모두 만족시키는 영화를,
+      mAP 성능 측정 방법의 분석에 따라 위 결과가 최종 점수로 기록되었습니다.
+
+  * 이 외 추천 기반 알고리즘
+    최고 점수 알고리즘 이외에 시도했던 다양한 알고리즘에 대한 설명입니다. (생각보다 점수가 낮아 아쉬웠던..)
+    * 공통 알고리즘
+      * 각 영화 아이템을 나타내는 Item Feture Vector를 정의
+        Feature Vector는 감독, 출연, 등급, 장르, 국가, 연도 등의 정보를 포함 여부로 결정 됨
+        예를 들어 [한국, 미국, 일본, 00세, 12세, 15세, 18세, 드라마, 액션, ...] N-차원을 같는 Vector라고 했을 때,
+        "18세, 한국"" 영화에 대한 Vector는 [1.0, 0, 0, 0, 0, 0, 1.0, 0, 0, ...]과 같이 생성 됨
+      * 각 유저에 대한 User Preference Vector 생성
+        사용자가 본 영화에 대한 Item Feature Vector를 평균내서(Averaging) User Preference Vector를 생성
+        즉, 한 사용자가 전체 10번의 영화 구매 중 한국 영화를 2번 봤으면, (2/10)
+        [0.2, 0, 0, 0, 0, ...] 과 같은 Preference Vector가 생성 됨
+      * Item Feature Vector와 User Preference Vector를 기반으로 추천 알고리즘 구현
+    * 시도했던 다양한 방법
+      * 사용자가 이미 구매한 아이템을 기준으로 Item Feature Vector를 비교해서 가장 유사한 아이템을 우선 추천
+        * 각 사용자가 이미 구매한 아이템을 기준으로 다른 영화들과의 Cosine Similarity를 구하고
+          그 중에서 가장 유사한 영화순으로 추천함
+      * 사용자가 이미 구매한 아이템을 기준으로 User Preference Vector를 구해서 가장 유사한 아이템을 우선해서 추천
+        * 각 사용자별 Preference Vector를 기반으로 구매하지 않은 영화 아이템에 대해 Cosine Similarity를 구하고
+          그 중에서 가장 유사한 영화순으로 추천함
+      * 사람들이 현재까지 가장 많이 본 영화들 중에서(Most Populars) 사용자가 이미 본 것을 제외하고 추천
+      * 2015년 2월 기준 박스오피스 누적관람객 상위 20개 영화 위주로 추천
+      * 2월 말일 기준 가장 인기있는 아이템을 위주로 추천
+
+
+# 실행 환경
+  * Python 2.7+
+  * pip install numpy scipy scikit-learn
+
+
+# 실행 방법
+  * cd src
+  * python recommend.py
+
+
+# 참고자료
+  * http://recommender-systems.org/content-based-filtering/
+  * http://dsmoon.tistory.com/entry/Contentbased-recommendation
+  * http://rosaec.snu.ac.kr/meet/file/20120728b.pdf
+  * http://www.fxpal.com/publications/FXPAL-PR-06-383.pdf
+  * http://ocean.kisti.re.kr/downfile/volume/kfis/PJJNBT/2011/v21n2/PJJNBT_2011_v21n2_224.pdf
+  * http://infolab.stanford.edu/~ullman/mmds/ch9.pdf
+  * http://ics.upjs.sk/~horvath/uploads/Activities/recsys-print.pdf
+  * http://www.diva-portal.org/smash/get/diva2:633561/FULLTEXT01.pdf
+  * http://www.fernandolobo.info/dm1213/slides/content-based-rec-systems.pdf
+  * http://www.cs.ucsb.edu/~nanli/projects/CS265-MovieGEN.pdf
+  * http://www.inf.unibz.it/~ricci/ISR/papers/pazzani07.pdf
+  * http://web.stanford.edu/class/cs345a/slides/03-recomsys.pdf
+  * http://www.ke.tu-darmstadt.de/events/PL-09/06-deGemmis.pdf
+
